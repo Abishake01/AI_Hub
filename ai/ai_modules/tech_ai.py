@@ -3,16 +3,11 @@ import requests
 GROQ_API_KEY = "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"
 
 def process(query):
-    prompt = f"""
-             You are a gaming AI expert who can discuss video games, game mechanics, strategies, game development, esports, and gaming industry trends.
-             You can also provide recommendations for different types of games based on user preferences.
-             Add emojis to make conversation like
-             If the user asks something unrelated to gaming, respond with:  
-            "I specialize in gaming topics only. Please ask me something related to video games or game development."
-
-            User: {query}
-    AI: 
-    """
+    prompt = f"""You are Tech AI. You answer questions related to programming, gadgets, AI, and new technologies. 
+    Add emojis to make conversation like
+    If the topic is not tech-related, reply: 'I only provide tech-related insights.'
+\n\nUser: {query}\nAI:
+"""
     try:
         response = requests.post(
             "https://api.groq.com/openai/v1/chat/completions",
