@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=w=ht#)+4rn1!3k6%qun0_+=-q)p=hl4g!bm975@v(k-^yust8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://ai-hub-3.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ai-hub-3.onrender.com', '127.0.0.1', 'localhost']
+
 
 
 
