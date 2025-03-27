@@ -17,7 +17,7 @@ def process(query):
             "https://api.groq.com/openai/v1/chat/completions",
             headers={"Authorization": f"Bearer {GROQ_API_KEY}", "Content-Type": "application/json"},
             json={
-                "model": "llama3-8b-8192",  # ✅ Updated to a supported model
+                "model": "llama3-8b-8192", 
                 "messages": [{"role": "user", "content": prompt}],
                 "temperature": 0.7
             }
