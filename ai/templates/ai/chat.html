@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ ai_type }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center justify-center h-screen">
+    <h1 class="text-2xl font-bold mb-4">{{ ai_type }}</h1>
+    <div class="w-96 h-96 bg-gray-800 p-4 rounded-lg overflow-y-auto" id="chat-box">
+        <p class="text-gray-400">Start chatting with {{ ai_type }}...</p>
+    </div>
+    <div class="w-96 mt-4">
+        <input id="message" class="w-full p-2 bg-gray-700 rounded text-white" placeholder="Type your message...">
+        <button onclick="sendMessage()" class="mt-2 w-full bg-blue-500 p-2 rounded hover:bg-blue-700">
+            Send
+        </button>
+    </div>
+
+    <script>
+        var endpoint = "{{ endpoint }}";  // This now holds 'education/chat', 'medical/chat', etc.
+    
+        function sendMessage() {
+            var message = document.getElementById("message").value;
+            if (!message) return;
+    
+            var chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<p class="text-blue-400 mt-2"><strong>You:</strong> ${message}</p>`;
+    
+            fetch(`/${endpoint}/?message=${encodeURIComponent(message)}`)  // 🔥 Now it calls 'education/chat/'
+                .then(response => response.json())
+                .then(data => {
+                    chatBox.innerHTML += `<p class="text-green-400 mt-2"><strong>AI:</strong> ${data.response}</p>`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                })
+                .catch(error => {
+                    chatBox.innerHTML += `<p class="text-red-400 mt-2"><strong>Error:</strong> Failed to get response.</p>`;
+                });
+    
+            document.getElementById("message").value = "";
+        }
+    </script>
+    
+    
+</body>
+</html>
