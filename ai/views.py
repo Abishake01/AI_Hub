@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from .ai_modules import education_ai, medical_ai, games_ai, personal_ai,tech_ai,finance_ai,cooking_ai,legal_ai,fitness_ai,travel_ai
  
+def index(request):
+    return render(request, 'ai/index.html')
 
 def home(request):
     return render(request, 'ai/home.html')
