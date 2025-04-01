@@ -12,54 +12,62 @@
     }
 
     .outer-cont {
-      padding: 12px 20px;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      position: relative;
-      background: linear-gradient(90deg, #5bfcc4, #f593e4, #71a4f0);
-      border-radius: 12px;
-      color: #fff;
-      transition: all 0.3s ease;
-      box-shadow:
-        inset 0px 0px 5px #ffffffa9,
-        inset 0px 35px 30px #000,
-        0px 5px 10px #000000cc;
-      text-shadow: 1px 1px 1px #000;
-    }
+  padding: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(90deg, #5bfcc4, #f593e4, #71a4f0);
+  border-radius: 8px; /* Reduced default radius */
+  color: #fff;
+  transition: all 0.3s ease;
+  box-shadow:
+    inset 0px 0px 5px #ffffffa9,
+    inset 0px 35px 30px #000,
+    0px 5px 10px #000000cc;
+  text-shadow: 1px 1px 1px #000;
+}
 
-    .outer-cont::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      margin: auto;
-      border-radius: 12px;
-      filter: blur(0);
-      z-index: -1;
-      box-shadow: none;
-      background: conic-gradient(#00000000 80deg,
-          #40baf7,
-          #f34ad7,
-          #5bfcc4,
-          #00000000 280deg);
-      transition: all 0.3s ease;
-    }
+/* Reduce border-radius further on larger screens */
+@media (min-width: 768px) {
+  .outer-cont {
+    border-radius: 6px;
+  }
+}
 
-    .outer-cont:hover::before {
-      filter: blur(15px);
-    }
+.outer-cont::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  border-radius: inherit;
+  filter: blur(0);
+  z-index: -1;
+  box-shadow: none;
+  background: conic-gradient(#00000000 80deg,
+      #40baf7,
+      #f34ad7,
+      #5bfcc4,
+      #00000000 280deg);
+  transition: all 0.3s ease;
+}
 
-    .outer-cont:active::before {
-      filter: blur(5px);
-      transform: translateY(1px);
-    }
+.outer-cont:hover::before {
+  filter: blur(10px);
+}
 
-    .outer-cont:active {
-      box-shadow:
-        inset 0px 0px 5px #ffffffa9,
-        inset 0px 35px 30px #000;
-      margin-top: 3px;
-    }
+.outer-cont:active::before {
+  filter: blur(4px);
+  transform: translateY(1px);
+}
+
+.outer-cont:active {
+  box-shadow:
+    inset 0px 0px 5px #ffffffa9,
+    inset 0px 35px 30px #000;
+  margin-top: 2px;
+}
+
 
     .container {
       margin-left: 50px;
@@ -183,6 +191,7 @@
 <body class="bg-gray-900 text-white flex justify-center items-center h-screen container">
   <div class="text-center sm:h-full sm:w-full ml-32 mt-20">
     <h1 class="text-3xl font-bold mb-6 sm:ml-24 md:mr-32">Welcome to AI Hub</h1>
+    
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 w-full max-w-5xl md:ml-0">
       <a href="{% url 'education_ai' %}" class="group block bg-blue-600 p-6 rounded-xl hover:bg-blue-700 overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
         <iframe src="https://lottie.host/embed/8c6e6c59-1aa5-470d-bffb-f5e0e7632a1d/kkV8pU2JdP.lottie"></iframe>
@@ -247,8 +256,8 @@
     </div>
 
 
-    <div class="outer-cont flex mt-10 text-center justify-center items-center">
-      <svg viewBox="0 0 24 24" height="24" width="14" xmlns="http://www.w3.org/2000/svg">
+    <div class="outer-cont flex mt-10 text-center justify-center items-center max-w-5xl">
+      <svg viewBox="0 0 24 24" height="24" width="10" xmlns="http://www.w3.org/2000/svg">
         <g fill="none">
           <path
             d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z">
